@@ -49,7 +49,7 @@ jobs:
              cd work
              repo init --depth=1 -u $MANIFEST -b fox_9.0
              repo sync -c -j4 --force-sync --no-clone-bundle --no-tags
-             git clone $DT_LINK --depth=1 -b shrp $DT_PATH
+             git clone $DT_LINK --depth=1 $DT_PATH
              
        - name: Build
          run: |
