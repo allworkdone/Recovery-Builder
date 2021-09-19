@@ -13,10 +13,10 @@ on:
   workflow_dispatch:
 
 env:
-  MANIFEST: https://github.com/SHRP/platform_manifest_twrp_omni.git
-  DEVICE: CPH1861
-  DT_LINK: https://github.com/kardebayan/android_device_oppo_CPH1861.git
-  DT_PATH: device/oppo/CPH1861
+  MANIFEST: https://gitlab.com/OrangeFox/Manifest.git
+  DEVICE: RMX1801
+  DT_LINK: https://github.com/allworkdone/twrp_device_realme_RMX1801_9.0
+  DT_PATH: device/realme/RMX1801
   TARGET: recoveryimage
   TZ: Asia/Kolkata
 
@@ -47,7 +47,7 @@ jobs:
          run: |
              mkdir work
              cd work
-             repo init --depth=1 -u $MANIFEST -b v3_9.0
+             repo init --depth=1 -u $MANIFEST -b fox_9.0
              repo sync -c -j4 --force-sync --no-clone-bundle --no-tags
              git clone $DT_LINK --depth=1 -b shrp $DT_PATH
              
@@ -61,8 +61,9 @@ jobs:
          env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
          with:
-          tag_name: v1.2
-          name: shrp
+          tag_name: vR11
+          name: OrangeFox
           files: | 
-            work/out/target/product/CPH1861/recovery.img
+            work/out/target/product/$DEVICE/*.zip
+            work/out/target/product/$DEVICE/recovery.img
             
