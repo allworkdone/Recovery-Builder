@@ -64,6 +64,5 @@ jobs:
           tag_name: vR11
           name: OrangeFox
           files: | 
-            work/out/target/product/$DEVICE/*.zip
-            work/out/target/product/$DEVICE/recovery.img
+            work/out/target/product/RMX1801/Orange*.zip
             
